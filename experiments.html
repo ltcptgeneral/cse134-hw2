@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<title>Experiments - Arthur Lu</title>
+		<link rel="stylesheet" href="style.css" type="text/css">
+		<style>
+			.flexbox {
+				display: flex;
+				flex-direction: row;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Arthur Lu</h1>
+			<nav>
+				<a href="index.html#about-me">About Me</a>
+				<a href="portfolio.html">My Projects</a>
+				<a href="index.html#contact-me">Contact Me</a>
+				<a href="experiments.html"><b>Experiments</b></a>
+			</nav>
+		</header>
+		<hr>
+		<main>
+			<!-- Showcasing some elements that didn't really fit with the rest of the site -->
+			<p>Here is some text describing something.</p>
+			<aside><p>Here is an aside, which is indirectly related to the main content. Since there is no css, it doesn't look very different, but is usually formatted as a sidebar</p></aside>
+			<p>Here is the rest of the content, which is now back to the main point. </p>
+
+			<p>Here is some code, it is a bash fork bomb</p>
+			<code>
+				:(){ :|:& };:
+			</code>
+
+			<pre>This is some                    preformatted text, it preserves w h i t e s p a c e</pre>
+			
+			<p>The image below will change depending on the size of the window. Try making the window smaller or larger.</p>
+			<picture>
+				<source media="(min-width:800px)" srcset="experimental/blue.png">
+				<source media="(max-width:800px)" srcset="experimental/red.png">
+				<img src="experimental/blue.png" alt="Colors" style="width:100%;">
+			</picture>
+
+			<p>Here is an iframe, which renders another website in this one. I have it linked to my github but it may not render becuase it may be blocked.</p>
+			<iframe src="https://github.com/ltcptgeneral"></iframe>
+
+			<p>Below is some audio (1812 Overture by Tchaikovsky) and video</p>
+			<audio controls>
+				<source src="experimental/1812.ogg" type="audio/ogg">
+			</audio>
+			<video controls>
+				<source src="experimental/hypercube.mp4" type="video/mp4">
+			</video>
+
+			<p>Here is an ordered list</p>
+			<ol>
+				<li>first item</li>
+				<li>second item</li>
+				<li>third item</li>
+			</ol>
+
+			<p>Here is a form with input and select with options</p>
+			<form>
+				<fieldset>
+					<legend>Input with Options</legend>
+					<datalist id="sample-options">
+						<option value="Option 1"></option>
+						<option value="Option 2"></option>
+						<option value="Option 3"></option>
+						<option value="Option 4"></option>
+						<option value="Option 5"></option>
+					</datalist>
+					<input list="sample-options">
+				</fieldset>
+				<fieldset>
+					<legend>Select</legend>
+					<select>
+						<optgroup label="Group 1">
+							<option value="1">Option 1</option>
+							<option value="2">Option 2</option>
+						</optgroup>
+						<optgroup label="Group 2">
+							<option value="3">Option 3</option>
+							<option value="4">Option 4</option>
+						</optgroup>
+						<optgroup label="Group 3">
+							<option value="5">Option 5</option>
+						</optgroup>
+					</select>
+				</fieldset>
+			</form>
+
+			<p>Here is an image of me, jsut like in then main page, however, there is also a caption below the image. I may use this format if it grows on me.</p>
+			<figure>
+				<img src="photo.png" alt="A photo of me">
+				<figcaption>A Photo of Me</figcaption>
+			</figure>
+
+			<canvas id="mandelbrot" width="300" height="300"></canvas>
+			<!-- A simple mandelbrot program 16 lines... but its pretty simple -->
+			<script>
+				let ctx = document.getElementById("mandelbrot").getContext("2d");
+				for (let x = 0; x < 300; x++) {
+					for (let y = 0; y < 300; y++) {
+						a = (x-150)/600 - 0.12;
+						b = (y-150)/600 - 0.82;
+						let t = 0;
+						do {
+							d = (a*a)-(b*b)+(x-150)/600 - 0.12;
+							b = 2*(a*b)+(y-150)/600 - 0.82;
+							a = d;
+							t++;
+						} while (d <= 200 && t <= 200);
+						ctx.fillStyle = `rgb(${t*3}, ${t}, ${t*0.3})`;
+						ctx.fillRect(x, y, 3, 3);
+					}
+				}
+			</script>
+		</main>
+		<hr>
+		<footer>
+			<svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 367.467 367.467"><path d="M183.73.018C82.427.018 0 82.404 0 183.733c0 101.289 82.427 183.716 183.73 183.716 101.315 0 183.737-82.427 183.737-183.716C367.467 82.404 285.045.018 183.73.018zm0 326.5c-78.743 0-142.798-64.052-142.798-142.784 0-78.766 64.055-142.817 142.798-142.817 78.752 0 142.807 64.052 142.807 142.817-.001 78.732-64.056 142.784-142.807 142.784z"/><path d="M244.036 217.014c-11.737 20.141-33.562 32.635-56.956 32.635-36.329 0-65.921-29.585-65.921-65.915 0-36.36 29.592-65.955 65.921-65.955 23.395 0 45.219 12.54 56.956 32.641l1.517 2.627h44.28l-2.658-7.129c-7.705-20.413-21.225-37.769-39.122-50.157-17.942-12.42-39.017-19.009-60.973-19.009-58.981 0-106.946 48.006-106.946 106.982 0 58.98 47.965 106.941 106.946 106.941 21.956 0 43.03-6.567 60.973-19.006 17.897-12.391 31.417-29.741 39.122-50.154l2.658-7.133h-44.28l-1.517 2.632z"/></svg>
+			<p>2023 Arthur Lu</p>
+		</footer>
+	</body>
+</html>
