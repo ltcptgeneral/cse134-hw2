@@ -99,20 +99,20 @@
 			</figure>
 
 			<canvas id="mandelbrot" width="300" height="300"></canvas>
-			<!-- A simple mandelbrot program 16 lines... but its pretty simple -->
+			<!-- A simple mandelbrot program in 16 lines... but its pretty simple -->
 			<script>
 				let ctx = document.getElementById("mandelbrot").getContext("2d");
 				for (let x = 0; x < 300; x++) {
 					for (let y = 0; y < 300; y++) {
-						a = (x-150)/600 - 0.12;
-						b = (y-150)/600 - 0.82;
+						let a = (x-150)/600 - 0.12;
+						let b = (y-150)/600 - 0.82;
 						let t = 0;
-						do {
-							d = (a*a)-(b*b)+(x-150)/600 - 0.12;
+						while(a <= 255 && t <= 255){
+							let d = (a*a)-(b*b)+(x-150)/600 - 0.12;
 							b = 2*(a*b)+(y-150)/600 - 0.82;
 							a = d;
 							t++;
-						} while (d <= 200 && t <= 200);
+						}
 						ctx.fillStyle = `rgb(${t*3}, ${t}, ${t*0.3})`;
 						ctx.fillRect(x, y, 3, 3);
 					}
