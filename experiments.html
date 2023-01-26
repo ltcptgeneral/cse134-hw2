@@ -104,13 +104,11 @@
 				let ctx = document.getElementById("mandelbrot").getContext("2d");
 				for (let x = 0; x < 300; x++) {
 					for (let y = 0; y < 300; y++) {
-						let c = {a: (x-150)/600 - 0.12, b: (y-150)/600 - 0.82};
-						let t = 0;
-						while(c.a <= 255 && t <= 255){
-							c = {a: (c.a*c.a)-(c.b*c.b)+(x-150)/600 - 0.12, b: 2*(c.a*c.b)+(y-150)/600 - 0.82};
-							t++;
+						let c = {a: (x-150)/600 - 0.12, b: (y-150)/600 - 0.82, t: 0};
+						while(c.a <= 255 && c.t <= 255){
+							c = {a: (c.a*c.a)-(c.b*c.b)+(x-150)/600 - 0.12, b: 2*(c.a*c.b)+(y-150)/600 - 0.82, t: c.t+1};
 						}
-						ctx.fillStyle = `rgb(${t*3}, ${t}, ${t*0.3})`;
+						ctx.fillStyle = `rgb(${c.t*3}, ${c.t}, ${c.t*0.3})`;
 						ctx.fillRect(x, y, 3, 3);
 					}
 				}
